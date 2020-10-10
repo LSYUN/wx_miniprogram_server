@@ -19,7 +19,7 @@ app.use(require('koa-bodyparser')());
 app.use(json());
 app.use(logger());
 
-app.use(function *(next){
+app.use(function* (next) {
   var start = new Date;
   yield next;
   var ms = new Date - start;

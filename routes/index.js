@@ -1,18 +1,21 @@
 var router = require('koa-router')();
-var jwt = require('jsonwebtoken');
-var tokenSecret = require('../config').tokenSecret;
+// var jwt = require('jsonwebtoken');
+// var tokenSecret = require('../config').tokenSecret;
 
-router.get('/', function* (req, res, next) {
-  console.log(req, res);
+router.get('/', function* () {
+  // console.log('req', this.params);
+  // console.log('res', ctx);
   // var token = jwt()
-  // yield this.render('index', {
-  //   title: 'Hello World Koa!'
-  // });
+  return yield this.body = {
+    echostr: this.query.echostr
+  };
 });
 
-router.get('/foo', function* (next) {
+router.get('/foo/:name/:age', function* () {
   yield this.render('index', {
-    title: 'Hello World foo!'
+    title: 'Hello World foo!',
+    params: this.params,
+    query: this.query
   });
 });
 
